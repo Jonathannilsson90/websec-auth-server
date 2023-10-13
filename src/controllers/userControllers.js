@@ -12,7 +12,7 @@ exports.registerUser = async (req,res) => {
         const existingUser = await User.findOne({username: req.body.username})
 
         if(existingUser){
-            return res.status(409).json({Message: "User already exist"})
+            return res.status(409).json({message: "User already exist"})
         }
   
         const user  = new User ({

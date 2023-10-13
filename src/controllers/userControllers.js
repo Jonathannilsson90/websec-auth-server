@@ -8,6 +8,12 @@ exports.registerUser = async (req,res) => {
     try {
 
         const hashedPassword  = await bcrypt.hash(req.body.password, 3);
+
+        const existingUser = await User.findOne({username: req.body.username})
+
+        if(existingUser){
+            return res.status(409).json({Message: "User already exist"})
+        }
   
         const user  = new User ({
             username : req.body.username,
@@ -16,9 +22,9 @@ exports.registerUser = async (req,res) => {
 
         await user.save();
 
-        res.json({message: user});
+        res.status(201).json({message:"Registration successful, welcome " + user.username});
 
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ error: "Internal server error" });
     }
 }

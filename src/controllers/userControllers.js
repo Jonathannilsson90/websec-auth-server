@@ -14,9 +14,11 @@ exports.registerUser = async (req,res) => {
         if(existingUser){
             return res.status(409).json({message: "User already exist"})
         }
-  
+
+        const usernameToLowerCase = req.body.username.toLowerCase();
+
         const user  = new User ({
-            username : req.body.username,
+            username : usernameToLowerCase,
             password : hashedPassword
         });
 

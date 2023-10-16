@@ -7,7 +7,8 @@ const rateLimit = require('./middleware/rateLimiter')
 app.use(express.json())
 app.use(cors())
 
-app.set('trust proxy', true)
+app.set('trust proxy', false)
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']);
 
 app.get('/api', cors(), rateLimit,  function (req,res) {
     res.json({message: "Hello World!"})

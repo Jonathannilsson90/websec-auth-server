@@ -6,7 +6,7 @@ const rateLimit = require('./middleware/rateLimiter')
 
 app.use(express.json())
 app.use(cors())
-
+//test 
 
 app.get('/api', cors(), rateLimit,  function (req,res) {
     res.json({message: "Hello World!"})

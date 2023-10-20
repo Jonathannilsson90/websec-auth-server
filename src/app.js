@@ -26,7 +26,7 @@ app.use(session({
     cookie:{
         maxAge: 1000 * 60 * 60 * 24,
         sameSite: process.env.SAMESITE || 'lax',
-        secure: process.env.COOKIE_SECURE || false,
+        secure: 'auto',
     }
 }))
 

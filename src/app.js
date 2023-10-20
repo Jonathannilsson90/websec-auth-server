@@ -34,12 +34,12 @@ app.use(passport.session())
 
 app.set('trust proxy', true)
 
-app.get('/api', rateLimit, function (req,res) {
+app.get('/api', cors(corsOptions), rateLimit, function (req,res) {
     
     res.json({message: "Hello World!"})
 })
 
 const userRoutes = require('./routes/userRoutes')
-app.use("/api", userRoutes)
+app.use("/api",cors(corsOptions), userRoutes)
 
 module.exports = app;

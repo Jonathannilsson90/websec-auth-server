@@ -34,6 +34,7 @@ app.use(passport.session())
 
 app.set('trust proxy', true)
 
+
 app.get('/api', cors(corsOptions), rateLimit, function (req,res) {
     
     res.json({message: "Hello World!"})

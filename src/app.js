@@ -42,5 +42,4 @@ app.get('/api', rateLimit, function (req,res) {
 const userRoutes = require('./routes/userRoutes')
 app.use("/api", userRoutes)
 
-
 module.exports = app;

@@ -35,7 +35,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.set('trust proxy', true)
+/* app.set('trust proxy', true) */
 
 
 app.get('/api', cors(corsOptions), rateLimit, function (req,res) {

@@ -28,14 +28,14 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24,
      httpOnly: false,
      sameSite: 'none',
-     secure: true,
+     secure: 'auto'
     }
 }))
 
 app.use(passport.initialize())
 app.use(passport.session())
 
-/* app.set('trust proxy', true) */
+app.set('trust proxy', 1)
 
 
 app.get('/api', cors(corsOptions), rateLimit, function (req,res) {

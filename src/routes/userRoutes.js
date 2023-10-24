@@ -8,7 +8,7 @@ const passport = require("passport");
 
 router.post("/register", controllers.registerUser);
 
-router.post("/login", passport.authenticate("local"), (req, res) => {
+router.post("/login", passport.authenticate("local", {session: false}), (req, res) => {
 const token = jwt.sign({userId: req.user.id }, process.env.JWTKEY, {expiresIn: '1h'});
 res.send({token})
 });

@@ -20,6 +20,7 @@ app.use(express.json())
 app.use(cors(corsOptions))
 app.use(express.urlencoded({extended:true}))
 app.use(session({
+    proxy: true,
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
@@ -34,8 +35,6 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
-
-app.set('trust proxy', 1)
 
 
 app.get('/api', cors(corsOptions), rateLimit, function (req,res) {

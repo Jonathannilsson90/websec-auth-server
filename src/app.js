@@ -27,9 +27,9 @@ app.use(session({
     store: MongoStore.create({mongoUrl: process.env.DB_URL}),
     cookie:{
         maxAge: 1000 * 60 * 60 * 24,
-     httpOnly: false,
-     sameSite: 'none',
-     secure: 'auto'
+     httpOnly: true,
+    sameSite: 'none', // comment this out to run locally.
+     secure: 'auto' 
     }
 }))
 

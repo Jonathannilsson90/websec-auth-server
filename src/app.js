@@ -18,7 +18,7 @@ initializePassport(passport)
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors(corsOptions))
-
+app.use(express.urlencoded({extended:true}))
 app.use(session({
     secret: process.env.SECRET,
     resave: false,

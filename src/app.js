@@ -6,7 +6,7 @@ const passport = require('passport')
 const app = express()
 const cookieParser = require('cookie-parser')
 const rateLimit = require('./middleware/rateLimiter')
-
+const helmet = require('helmet')
 const corsOptions = {
     origin: process.env.URL,
     credentials: true, 
@@ -19,6 +19,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(cors(corsOptions))
 app.use(express.urlencoded({extended:true}))
+app.use(helmet())
 app.use(session({
     proxy: true,
     secret: process.env.SECRET,
@@ -28,7 +29,7 @@ app.use(session({
     cookie:{
         maxAge: 1000 * 60 * 60 * 24,
      httpOnly: true,
-    sameSite: 'none', // comment this out to run locally.
+      sameSite: 'none',  // comment this out to run locally.
      secure: 'auto' 
     }
 }))

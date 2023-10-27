@@ -23,9 +23,10 @@ router.get('/check-session', (req, res) => {
     }
   });
 
-router.get('/logout', (req,res)=> {
-    req.logout()
-})
-
-
+  router.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+      res.clearCookie('connect.sid');
+      res.send('Logged out');
+    });
+  });
 module.exports = router;

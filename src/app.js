@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -20,6 +21,9 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
+
+const sameSite = process.env.SAMESITE
+
 app.use(
   session({
     proxy: true,
@@ -30,7 +34,7 @@ app.use(
     cookie: {
       maxAge: 1000 * 60 * 60 * 24,
       httpOnly: true,
-      sameSite: "none", // comment this out to run locally.
+      sameSite: sameSite,
       secure: "auto",
     },
   })

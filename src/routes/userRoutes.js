@@ -23,7 +23,7 @@ router.get('/check-session', (req, res) => {
     }
   });
 
-  router.post('/logout', (req, res) => {
+  router.delete('/logout', (req, res) => {
     req.session.destroy((err) => {
       res.clearCookie('connect.sid');
       res.send('Logged out');

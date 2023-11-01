@@ -1,10 +1,15 @@
+require("dotenv").config();
 const express = require("express");
-const router = express.Router();
+const axios = require('axios')
 const jwt = require('jsonwebtoken')
+const passport = require("passport");
 
+const router = express.Router();
 
 const controllers = require("../controllers/userControllers");
-const passport = require("passport");
+
+const RECAPTCHA_URL= process.env.RECAPTCHA_URL;
+
 
 router.post("/register", controllers.registerUser);
 
@@ -22,11 +27,19 @@ router.get('/check-session', (req, res) => {
       res.status(401).json({ isAuthenticated: false });
     }
   });
-
+ //async?
   router.delete('/logout', (req, res) => {
     req.session.destroy((err) => {
       res.clearCookie('connect.sid');
       res.send('Logged out');
     });
   });
+
+router.post('/verify', async(req,res) => {
+  const {recaptchaValue} = req.body;
+  const {data} = await axios.post( RECAPTCHA_URL+`${recaptchaValue}`
+  );
+  res.send(data);
+})
+
 module.exports = router;

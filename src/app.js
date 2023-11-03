@@ -14,7 +14,7 @@ const ecsFormat = require('@elastic/ecs-morgan-format')
 const fs = require('fs')
 const path = require('path')
 const rfs = require('rotating-file-stream')
-
+const healthcheck = require('healthcheck-middleware');
 const logDirectory = path.join(__dirname,'../logs');
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
 
@@ -25,7 +25,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, '../logs/acces
 
 app.use(morgan(ecsFormat(),{stream: accessLogStream}))
 
-
+app.use('/healthcheck',healthcheck())
 
 const corsOptions = {
   origin: process.env.URL,

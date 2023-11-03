@@ -8,6 +8,25 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const rateLimit = require("./middleware/rateLimiter");
 const helmet = require("helmet");
+
+const morgan = require('morgan')
+const ecsFormat = require('@elastic/ecs-morgan-format')
+const fs = require('fs')
+const path = require('path')
+const rfs = require('rotating-file-stream')
+
+const logDirectory = path.join(__dirname,'../logs');
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
+
+const accessLogStream = fs.createWriteStream(path.join(__dirname, '../logs/access.log'),{
+  interval: '1d',
+  path: logDirectory
+})
+
+app.use(morgan(ecsFormat(),{stream: accessLogStream}))
+
+
+
 const corsOptions = {
   origin: process.env.URL,
   credentials: true,

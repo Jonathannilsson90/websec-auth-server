@@ -24,7 +24,6 @@ router.get("/token", (req,res)=>{
     secure: true,
     sameSite: 'strict',
     maxAge: 1000 * 60 * 2,
-    path: "/",
   });
   res.status(200).json({token: newJWTCookieToken})
 })
@@ -46,7 +45,6 @@ router.get('/refresh-token', (req,res)=>{
     secure: true,
     sameSite: sameSite,
     maxAge: 1000 * 60 * 2,
-    path: "/",
   });
   res.json({token: newJWTCookieToken})
   })

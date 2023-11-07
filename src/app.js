@@ -30,7 +30,7 @@ app.use('/healthcheck',healthcheck())
 
 
 const corsOptions = {
-  origin: [process.env.BACKEND_URL,process.env.FRONTEND_URL],
+  origin: [process.env.BACKEND_URL, process.env.FRONTEND_URL],
   credentials: true,
 };
 

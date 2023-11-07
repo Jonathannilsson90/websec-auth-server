@@ -27,8 +27,10 @@ app.use(morgan(ecsFormat(),{stream: accessLogStream}))
 
 app.use('/healthcheck',healthcheck())
 
+
+
 const corsOptions = {
-  origin: process.env.URL,
+  origin: [process.env.BACKEND_URL,process.env.FRONTEND_URL],
   credentials: true,
 };
 

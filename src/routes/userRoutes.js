@@ -31,10 +31,9 @@ router.get("/token", (req,res)=>{
   res.status(200).json({token: newJWTCookieToken})
 })
 
-
 const sameSite = process.env.SAMESITE 
 
-router.get('/refresh-token', (req,res)=>{
+router.get('/refresh-token', (req,res)=> {
   const refreshJWTCookieToken =  req.cookies.__session;
 
   jwt.verify(refreshJWTCookieToken, process.env.JWTKEY, (err, decoded)=>{

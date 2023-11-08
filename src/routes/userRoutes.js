@@ -20,7 +20,7 @@ router.get("/token", (req,res)=>{
   const newJWTCookieToken = jwt.sign({userId:req.user.id}, process.env.JWTKEY,{
     expiresIn: "2m",
   });
-  res.cookie("jwtToken",newJWTCookieToken,{
+  res.cookie("__session",newJWTCookieToken,{
     httpOnly: true,
     secure: true,
     sameSite: sameSite,
@@ -43,7 +43,7 @@ router.get('/refresh-token', (req,res)=>{
   const newJWTCookieToken = jwt.sign({userId: decoded.userId}, process.env.JWTKEY,{
     expiresIn: '2m'
   })
-  res.cookie("jwtToken",newJWTCookieToken,{
+  res.cookie("__session",newJWTCookieToken,{
     httpOnly: true,
     secure: true,
     sameSite: sameSite,
@@ -66,7 +66,7 @@ router.get("/check-session", (req, res) => {
 router.delete("/logout", (req, res) => {
   req.session.destroy((err) => {
     res.clearCookie("connect.sid");
-    res.clearCookie("jwtToken");
+    res.clearCookie("__session");
     res.send("Logged out");
   });
 });

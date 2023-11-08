@@ -21,14 +21,11 @@ router.get("/token", (req,res)=>{
     expiresIn: "2m",
   });
   res.cookie("__session",newJWTCookieToken,{
-    httpOnly: true,
     secure: true,
     sameSite: sameSite,
     maxAge: 1000 * 60 * 2,
     path: "/",
   });
-
-res.setHeader('Cache-Control', 'private')
 
   res.status(200).json({token: newJWTCookieToken})
 })
@@ -47,14 +44,11 @@ router.get('/refresh-token', (req,res)=>{
     expiresIn: '2m'
   })
   res.cookie("__session",newJWTCookieToken,{
-    httpOnly: true,
     secure: true,
     sameSite: sameSite,
     maxAge: 1000 * 60 * 2,
     path: "/",
   });
-  res.setHeader('Cache-Control', 'private')
-
 
   res.json({token: newJWTCookieToken})
   })

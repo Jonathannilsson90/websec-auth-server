@@ -21,6 +21,7 @@ router.get("/token", (req,res)=>{
     expiresIn: "2m",
   });
   res.cookie("__session",newJWTCookieToken,{
+    httpOnly: true,
     secure: true,
     sameSite: sameSite,
     maxAge: 1000 * 60 * 2,
@@ -44,6 +45,7 @@ router.get('/refresh-token', (req,res)=>{
     expiresIn: '2m'
   })
   res.cookie("__session",newJWTCookieToken,{
+    httpOnly: true,
     secure: true,
     sameSite: sameSite,
     maxAge: 1000 * 60 * 2,

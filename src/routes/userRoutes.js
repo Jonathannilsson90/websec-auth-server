@@ -17,7 +17,7 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
 });
 
 router.get("/token", (req,res)=>{
-  const newJWTCookieToken = jwt.sign({userId:req.user.id}, process.env.JWTKEY,{
+  const newJWTCookieToken = jwt.sign({userId:req.user.id, username: req.user.username}, process.env.JWTKEY,{
     expiresIn: "2m",
   });
   res.cookie("__session",newJWTCookieToken,{
@@ -40,7 +40,7 @@ router.get('/refresh-token', (req,res)=> {
     if(err){
       return res.status(401).json({message: 'invalid jwtToken'})
   }
-  const newJWTCookieToken = jwt.sign({userId: decoded.userId}, process.env.JWTKEY,{
+  const newJWTCookieToken = jwt.sign({userId: decoded.userId,  username: decoded.username}, process.env.JWTKEY,{
     expiresIn: '2m'
   })
   res.cookie("__session",newJWTCookieToken,{

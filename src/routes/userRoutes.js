@@ -27,6 +27,9 @@ router.get("/token", (req,res)=>{
     maxAge: 1000 * 60 * 2,
     path: "/",
   });
+
+res.setHeader('Cache-Control', 'private')
+
   res.status(200).json({token: newJWTCookieToken})
 })
 
@@ -50,8 +53,12 @@ router.get('/refresh-token', (req,res)=>{
     maxAge: 1000 * 60 * 2,
     path: "/",
   });
+  res.setHeader('Cache-Control', 'private')
+
+
   res.json({token: newJWTCookieToken})
   })
+  
 })
 
 router.get("/check-session", (req, res) => {

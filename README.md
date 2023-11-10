@@ -7,7 +7,7 @@
 * Jonathan Nilsson   
 
 
-### Uppgift: Server för autentisering
+### Uppgift: Server för autentisering och auktorisering
 
 **Mål**: *"Målet är att utrusta våra
 studenter med rudimentär kunskap och praktiska färdigheter för att förstå säkerhetskrav och

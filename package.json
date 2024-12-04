@@ -27,7 +27,7 @@
     "jest-runner-groups": "^2.2.0",
     "jsonwebtoken": "^9.0.2",
     "luxon": "^3.4.3",
-    "mongoose": "^8.2.0",
+    "mongoose": "^8.8.3",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",

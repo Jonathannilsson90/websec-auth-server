@@ -26,7 +26,7 @@
     "jest-html-reporter": "^3.10.2",
     "jest-runner-groups": "^2.2.0",
     "jsonwebtoken": "^9.0.2",
-    "luxon": "^3.4.3",
+    "luxon": "^3.5.0",
     "mongoose": "^8.8.3",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",

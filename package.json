@@ -20,7 +20,7 @@
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "express-rate-limit": "^7.1.1",
-    "express-session": "^1.18.1",
+    "express-session": "^1.18.2",
     "healthcheck-middleware": "^1.0.1",
     "helmet": "^7.0.0",
     "jest-html-reporter": "^3.10.2",
@@ -28,7 +28,7 @@
     "jsonwebtoken": "^9.0.2",
     "luxon": "^3.4.3",
     "mongoose": "^8.8.3",
-    "morgan": "^1.10.0",
+    "morgan": "^1.10.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "rotating-file-stream": "^3.1.1"
